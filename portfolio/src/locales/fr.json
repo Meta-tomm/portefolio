@@ -1,0 +1,75 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "skills": "Compétences",
+    "projects": "Projets",
+    "contact": "Contact",
+    "cv": "CV"
+  },
+  "hero": {
+    "greeting": "Bonjour, je suis",
+    "title": "Développeur Full Stack Junior",
+    "description": "Étudiant en cybersécurité et développement à Epitech",
+    "viewProjects": "Voir mes projets",
+    "contactMe": "Me contacter"
+  },
+  "about": {
+    "title": "À propos de moi",
+    "intro": "Étudiant en Master of Science Numérique à Epitech Lyon, je suis passionné par le développement web et la cybersécurité.",
+    "desc": "Avec une double compétence en développement et en gestion, je cherche à contribuer à des projets innovants dans le domaine de la santé numérique.",
+    "location": "Localisation",
+    "status": "Statut",
+    "statusValue": "En alternance",
+    "email": "Email",
+    "phone": "Téléphone",
+    "downloadCV": "Télécharger mon CV"
+  },
+  "skills": {
+    "title": "Compétences Techniques",
+    "subtitle": "Technologies et outils que j'utilise",
+    "softSkills": "Soft Skills",
+    "adaptation": "Adaptation rapide",
+    "rigor": "Rigueur",
+    "teamwork": "Travail d'équipe",
+    "ethics": "Sens de l'éthique",
+    "confidentiality": "Confidentialité",
+    "english": "Anglais C1"
+  },
+  "projects": {
+    "title": "Mes Projets",
+    "viewMore": "Voir plus sur GitHub",
+    "status": {
+      "inProgress": "En cours",
+      "academic": "Académique"
+    }
+  },
+  "contact": {
+    "title": "Me Contacter",
+    "subtitle": "Vous avez un projet ou une opportunité d'alternance ? Contactez-moi !",
+    "info": "Informations",
+    "location": "Localisation",
+    "availability": "Disponibilité",
+    "availabilityValue": "Disponible en alternance",
+    "findMe": "Retrouvez-moi sur",
+    "sendMessage": "Envoyez un message",
+    "form": {
+      "name": "Nom",
+      "namePlaceholder": "Votre nom",
+      "email": "Email",
+      "emailPlaceholder": "votre.email@example.com",
+      "subject": "Sujet",
+      "subjectPlaceholder": "Opportunité d'alternance",
+      "message": "Message",
+      "messagePlaceholder": "Votre message...",
+      "send": "Envoyer le message"
+    }
+  },
+  "footer": {
+    "description": "Développeur Full Stack Junior passionné par la création d'applications web modernes.",
+    "navigation": "Navigation",
+    "contact": "Contact",
+    "rights": "Tous droits réservés.",
+    "builtWith": "Développé avec React & Tailwind CSS"
+  }
+}

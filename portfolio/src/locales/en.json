@@ -1,0 +1,75 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "contact": "Contact",
+    "cv": "Resume"
+  },
+  "hero": {
+    "greeting": "Hello, I'm",
+    "title": "Junior Full Stack Developer",
+    "description": "Cybersecurity and Development student at Epitech",
+    "viewProjects": "View my projects",
+    "contactMe": "Contact me"
+  },
+  "about": {
+    "title": "About Me",
+    "intro": "Student in Master of Science in Digital Technology at Epitech Lyon, I'm passionate about web development and cybersecurity.",
+    "desc": "With a dual expertise in development and management, I'm looking to contribute to innovative projects in the field of digital health.",
+    "location": "Location",
+    "status": "Status",
+    "statusValue": "Looking for internship",
+    "email": "Email",
+    "phone": "Phone",
+    "downloadCV": "Download my Resume"
+  },
+  "skills": {
+    "title": "Technical Skills",
+    "subtitle": "Technologies and tools I use",
+    "softSkills": "Soft Skills",
+    "adaptation": "Quick adaptation",
+    "rigor": "Rigor",
+    "teamwork": "Teamwork",
+    "ethics": "Sense of ethics",
+    "confidentiality": "Confidentiality",
+    "english": "English C1"
+  },
+  "projects": {
+    "title": "My Projects",
+    "viewMore": "View more on GitHub",
+    "status": {
+      "inProgress": "In Progress",
+      "academic": "Academic"
+    }
+  },
+  "contact": {
+    "title": "Contact Me",
+    "subtitle": "Do you have a project or an internship opportunity? Contact me!",
+    "info": "Information",
+    "location": "Location",
+    "availability": "Availability",
+    "availabilityValue": "Available for internship",
+    "findMe": "Find me on",
+    "sendMessage": "Send a message",
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "your.email@example.com",
+      "subject": "Subject",
+      "subjectPlaceholder": "Internship opportunity",
+      "message": "Message",
+      "messagePlaceholder": "Your message...",
+      "send": "Send message"
+    }
+  },
+  "footer": {
+    "description": "Junior Full Stack Developer passionate about creating modern web applications.",
+    "navigation": "Navigation",
+    "contact": "Contact",
+    "rights": "All rights reserved.",
+    "builtWith": "Built with React & Tailwind CSS"
+  }
+}
