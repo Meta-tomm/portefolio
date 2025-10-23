@@ -10,14 +10,14 @@
   "hero": {
     "greeting": "Bonjour, je suis",
     "title": "Développeur Full Stack Junior",
-    "description": "Étudiant en cybersécurité et développement à Epitech",
+    "description": "Étudiant en développement Fullstack et Data Analyst à Epitech",
     "viewProjects": "Voir mes projets",
     "contactMe": "Me contacter"
   },
   "about": {
     "title": "À propos de moi",
-    "intro": "Étudiant en Master of Science Numérique à Epitech Lyon, je suis passionné par le développement web et la cybersécurité.",
-    "desc": "Avec une double compétence en développement et en gestion, je cherche à contribuer à des projets innovants dans le domaine de la santé numérique.",
+    "intro": "Étudiant en Master of Science Numérique à Epitech Lyon, je suis passionné par le développement Fullstack et l'analyse des donnée.",
+    "desc": "Avec une double compétence en développement et en gestion, je cherche à contribuer à des projets innovants particulierement dans le secteur de la santé mais restant ouvert au reste des domaines.",
     "location": "Localisation",
     "status": "Statut",
     "statusValue": "En alternance",
@@ -68,8 +68,6 @@
   "footer": {
     "description": "Développeur Full Stack Junior passionné par la création d'applications web modernes.",
     "navigation": "Navigation",
-    "contact": "Contact",
-    "rights": "Tous droits réservés.",
-    "builtWith": "Développé avec React & Tailwind CSS"
+    "contact": "Contact"
   }
 }

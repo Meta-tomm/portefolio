@@ -224,7 +224,7 @@ function Hero() {
         </div>
 
         {/* Scroll down indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div className="absolute mt-10 bottom-18 left-1/2 transform -translate-x-1/2 animate-bounce">
           <div className="flex flex-col items-center gap-2">
             <span
               className={`text-sm ${
