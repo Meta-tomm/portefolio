@@ -89,7 +89,7 @@ function About() {
             </p>
 
             {/* Info cards with glassmorphism effect */}
-            <div className="grid grid-cols-2 gap-4 pt-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6">
               {[
                 { label: t("about.location"), value: "Lyon, France" },
                 { label: t("about.status"), value: t("about.statusValue") },
