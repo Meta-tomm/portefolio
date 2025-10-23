@@ -3,8 +3,7 @@ import { useTheme } from "../../context/themecontext";
 import { useScrollAnimation } from "../../hooks/UseScrollAnimation";
 import { CardBody, CardContainer, CardItem } from "../ui/3d-card";
 
-// Projects section with 3D card effect from Aceternity UI
-// TODO: maybe add filter by technology later?
+// TODO: filter techno mais pas assez de projet
 function Projects() {
   const [ref, isVisible] = useScrollAnimation();
   const { isDark } = useTheme();
