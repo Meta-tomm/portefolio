@@ -3,7 +3,8 @@ import { useTheme } from "../../context/themecontext";
 import { useScrollAnimation } from "../../hooks/UseScrollAnimation";
 import { CardBody, CardContainer, CardItem } from "../ui/3d-card";
 
-// TODO: filter techno mais pas assez de projet
+// Projects section with 3D card effect from Aceternity UI
+// TODO: maybe add filter by technology later?
 function Projects() {
   const [ref, isVisible] = useScrollAnimation();
   const { isDark } = useTheme();
@@ -85,7 +86,7 @@ function Projects() {
           <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto"></div>
         </div>
 
-        {/* Projects grid with 3D cards */}
+        {/* Projects grid with 3D cards - equal heights */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <CardContainer
@@ -94,7 +95,7 @@ function Projects() {
               containerClassName="w-full"
             >
               <CardBody
-                className={`relative group/card w-full h-auto rounded-xl p-6 border transition-all duration-500 ${
+                className={`relative group/card w-full h-auto rounded-xl p-6 border transition-all duration-500 flex flex-col ${
                   isDark
                     ? "bg-gray-800/50 border-white/[0.2] hover:shadow-2xl hover:shadow-emerald-500/[0.1]"
                     : "bg-white border-black/[0.1] shadow-xl hover:shadow-2xl"
@@ -111,28 +112,32 @@ function Projects() {
                   ></div>
                 </CardItem>
 
-                {/* Project header */}
-                <CardItem
-                  translateZ="50"
-                  className="flex justify-between items-start mt-4 mb-4"
-                >
-                  <h3
-                    className={`text-xl font-bold ${
-                      isDark ? "text-white" : "text-gray-900"
-                    }`}
-                  >
-                    {project.title}
-                  </h3>
-                  <span
-                    className={`text-xs px-3 py-1 rounded-full font-medium ${
-                      isDark
-                        ? "bg-blue-600/20 text-blue-400"
-                        : "bg-blue-50 text-blue-600"
-                    }`}
-                  >
-                    {t(`projects.status.${project.status}`)}
-                  </span>
-                </CardItem>
+                {/* Header section with title and badge aligned */}
+                <div className="flex justify-between items-start mt-4 mb-4 gap-3">
+                  {/* Project title */}
+                  <CardItem translateZ="50" className="flex-1">
+                    <h3
+                      className={`text-xl font-bold ${
+                        isDark ? "text-white" : "text-gray-900"
+                      }`}
+                    >
+                      {project.title}
+                    </h3>
+                  </CardItem>
+
+                  {/* Status badge - aligned with title */}
+                  <CardItem translateZ="50" className="flex-shrink-0">
+                    <span
+                      className={`text-xs px-3 py-1 rounded-full font-medium whitespace-nowrap ${
+                        isDark
+                          ? "bg-blue-600/20 text-blue-400"
+                          : "bg-blue-50 text-blue-600"
+                      }`}
+                    >
+                      {t(`projects.status.${project.status}`)}
+                    </span>
+                  </CardItem>
+                </div>
 
                 {/* Description */}
                 <CardItem
@@ -145,8 +150,8 @@ function Projects() {
                   {project.description}
                 </CardItem>
 
-                {/* Tech stack tags - elevated on hover */}
-                <CardItem translateZ="100" className="w-full mb-4">
+                {/* Tech stack tags - elevated on hover with flex-grow to push buttons down */}
+                <CardItem translateZ="100" className="w-full mb-4 flex-1">
                   <div className="flex flex-wrap gap-2">
                     {project.technologies.map((tech) => (
                       <span
@@ -163,8 +168,11 @@ function Projects() {
                   </div>
                 </CardItem>
 
-                {/* Action buttons - most elevated */}
-                <CardItem translateZ="120" className="w-full flex gap-3 mt-6">
+                {/* Action buttons - most elevated and at the bottom */}
+                <CardItem
+                  translateZ="120"
+                  className="w-full flex gap-3 mt-auto"
+                >
                   {project.github && (
                     <a
                       href={project.github}
