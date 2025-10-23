@@ -7,6 +7,7 @@ import Projects from "./components/sections/Project";
 import Skills from "./components/sections/Skills";
 import ScrollToTop from "./components/ui/ScrollToTop.jsx";
 
+// TODO: ajouter React Router pour navigation future ?
 function App() {
   return (
     <div className="min-h-screen bg-black text-white">

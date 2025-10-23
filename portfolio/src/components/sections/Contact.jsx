@@ -2,6 +2,8 @@ import { useTranslation } from "react-i18next";
 import { useTheme } from "../../context/themecontext";
 import { useScrollAnimation } from "../../hooks/UseScrollAnimation";
 
+// Contact section with form
+// TODO: connecter à EmailJS ou Formspree pour envoyer les messages
 function Contact() {
   const [ref, isVisible] = useScrollAnimation();
   const { isDark } = useTheme();
@@ -40,7 +42,7 @@ function Contact() {
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
       }`}
     >
-      {/* Fond avec particules */}
+      {/* Background particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div
           className={`absolute w-96 h-96 rounded-full blur-3xl opacity-10 ${
@@ -76,7 +78,7 @@ function Contact() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-12">
-          {/* Informations de contact */}
+          {/* Contact information cards */}
           <div className="space-y-6">
             <h3
               className={`text-2xl font-bold mb-6 ${
@@ -95,7 +97,6 @@ function Contact() {
                     : "bg-white shadow-md hover:shadow-xl border border-gray-100"
                 }`}
               >
-                <div className="text-3xl">{info.icon}</div>
                 <div className="flex-1">
                   <p
                     className={`text-sm mb-1 ${
@@ -126,7 +127,7 @@ function Contact() {
               </div>
             ))}
 
-            {/* Social Links */}
+            {/* Social media links */}
             <div className="pt-6">
               <p
                 className={`text-sm mb-4 ${
@@ -137,7 +138,7 @@ function Contact() {
               </p>
               <div className="flex gap-4">
                 <a
-                  href="https://github.com/tommathis"
+                  href="https://github.com/Meta-tomm"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`flex-1 px-6 py-3 rounded-xl transition-all flex items-center justify-center gap-2 font-medium hover:scale-105 ${
@@ -156,7 +157,7 @@ function Contact() {
                   GitHub
                 </a>
                 <a
-                  href="https://linkedin.com/in/tom-mathis-chapuis"
+                  href="https://www.linkedin.com/in/tom-mathis-chapuis-butel-6b344830a"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`flex-1 px-6 py-3 rounded-xl transition-all flex items-center justify-center gap-2 font-medium hover:scale-105 ${
@@ -178,7 +179,7 @@ function Contact() {
             </div>
           </div>
 
-          {/* Formulaire de contact stylé */}
+          {/* Contact form - validation à ajouter */}
           <div
             className={`p-8 rounded-2xl backdrop-blur-sm ${
               isDark

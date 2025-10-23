@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 import { useTheme } from "../../context/themecontext";
 import { useScrollAnimation } from "../../hooks/UseScrollAnimation";
 
+// TODO: ajouter une timeline interactive du parcours ?
 function About() {
   const [ref, isVisible] = useScrollAnimation();
   const { isDark } = useTheme();
@@ -17,7 +18,7 @@ function About() {
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
       }`}
     >
-      {/* Particules de fond */}
+      {/* Background particles effect */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div
           className={`absolute w-96 h-96 rounded-full blur-3xl opacity-10 ${
@@ -34,6 +35,7 @@ function About() {
       </div>
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
+        {/* Sct header */}
         <div className="text-center mb-16">
           <h2
             className={`text-4xl md:text-5xl font-bold mb-4 ${
@@ -46,12 +48,12 @@ function About() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Avatar avec effet */}
+          {/* PP with decorative effects */}
           <div className="flex justify-center">
             <div className="relative group">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full blur-xl opacity-50 group-hover:opacity-75 transition-opacity"></div>
 
-              {/* Photo de profil avec bordure dégradée */}
+              {/* PP avec bordure dégradée */}
               <div className="relative w-64 h-64 rounded-full p-1 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 transform group-hover:scale-105 transition-transform duration-300">
                 <div className="w-full h-full rounded-full overflow-hidden bg-gray-900">
                   <img
@@ -62,13 +64,13 @@ function About() {
                 </div>
               </div>
 
-              {/* Cercles décoratifs */}
+              {/* Decorative circles - rotation animation on hover */}
               <div className="absolute -top-4 -right-4 w-20 h-20 border-4 border-blue-500 rounded-full opacity-50 group-hover:rotate-180 transition-transform duration-700"></div>
               <div className="absolute -bottom-4 -left-4 w-16 h-16 border-4 border-purple-500 rounded-full opacity-50 group-hover:-rotate-180 transition-transform duration-700"></div>
             </div>
           </div>
 
-          {/* Contenu */}
+          {/* Content section */}
           <div className="space-y-6">
             <p
               className={`text-lg leading-relaxed ${
@@ -86,7 +88,7 @@ function About() {
               {t("about.desc")}
             </p>
 
-            {/* Cartes d'info avec glassmorphism */}
+            {/* Info cards with glassmorphism effect */}
             <div className="grid grid-cols-2 gap-4 pt-6">
               {[
                 { label: t("about.location"), value: "Lyon, France" },
@@ -123,7 +125,7 @@ function About() {
               ))}
             </div>
 
-            {/* Bouton CV stylé */}
+            {/* CV download button */}
             <a
               href="/cv-tom-mathis-chapuis.pdf"
               target="_blank"

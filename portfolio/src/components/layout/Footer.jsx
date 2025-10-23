@@ -1,8 +1,8 @@
 import { useTranslation } from "react-i18next";
 import { useTheme } from "../../context/themecontext";
 
+// Footer component with links and copyright
 function Footer() {
-  const currentYear = new Date().getFullYear();
   const { isDark } = useTheme();
   const { t } = useTranslation();
 
@@ -31,6 +31,7 @@ function Footer() {
             </p>
           </div>
 
+          {/* Quick navigation */}
           <div>
             <h3
               className={`text-lg font-bold mb-4 ${
@@ -103,6 +104,7 @@ function Footer() {
             </ul>
           </div>
 
+          {/* Contact info */}
           <div>
             <h3
               className={`text-lg font-bold mb-4 ${
@@ -124,7 +126,7 @@ function Footer() {
             </ul>
             <div className="flex gap-4 mt-4">
               <a
-                href="https://github.com/tommathis"
+                href="https://github.com/Meta-tomm"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`transition-colors ${
@@ -136,7 +138,7 @@ function Footer() {
                 GitHub
               </a>
               <a
-                href="https://linkedin.com/in/tom-mathis-chapuis"
+                href="https://www.linkedin.com/in/tom-mathis-chapuis-butel-6b344830a"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`transition-colors ${
@@ -149,25 +151,6 @@ function Footer() {
               </a>
             </div>
           </div>
-        </div>
-
-        <div
-          className={`pt-8 border-t text-center ${
-            isDark ? "border-gray-800" : "border-gray-200"
-          }`}
-        >
-          <p
-            className={`text-sm ${isDark ? "text-gray-400" : "text-gray-600"}`}
-          >
-            © {currentYear} Tom-Mathis Chapuis-Butel. {t("footer.rights")}
-          </p>
-          <p
-            className={`text-xs mt-2 ${
-              isDark ? "text-gray-500" : "text-gray-500"
-            }`}
-          >
-            {t("footer.builtWith")}
-          </p>
         </div>
       </div>
     </footer>

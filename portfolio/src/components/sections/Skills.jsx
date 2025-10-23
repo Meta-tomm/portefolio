@@ -19,12 +19,16 @@ import {
 import { TbBrandCSharp } from "react-icons/tb";
 import { useTheme } from "../../context/themecontext";
 import { useScrollAnimation } from "../../hooks/UseScrollAnimation";
+import { CardBody, CardContainer, CardItem } from "../ui/3d-card";
 
+// Skills section with subtle 3D effect - keeping original compact design
+// L'effet 3D est plus subtil, juste pour l'interactivité
 function Skills() {
   const [ref, isVisible] = useScrollAnimation();
   const { isDark } = useTheme();
   const { t } = useTranslation();
 
+  // Tech skills with icons and brand colors
   const skillsData = [
     { name: "React", icon: FaReact, color: "#61DAFB" },
     { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
@@ -61,7 +65,7 @@ function Skills() {
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
       }`}
     >
-      {/* Fond avec particules */}
+      {/* Background particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div
           className={`absolute w-96 h-96 rounded-full blur-3xl opacity-10 ${
@@ -92,44 +96,55 @@ function Skills() {
           </p>
         </div>
 
-        {/* Grid de compétences avec effet 3D */}
+        {/* Skills grid - compact size with subtle 3D effect */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 mb-16">
           {skillsData.map((skill, index) => (
-            <div
+            <CardContainer
               key={skill.name}
-              className={`group relative p-6 rounded-2xl transition-all duration-300 hover:scale-110 cursor-pointer flex flex-col items-center justify-center backdrop-blur-sm ${
-                isDark
-                  ? "bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20"
-                  : "bg-white shadow-md hover:shadow-2xl border border-gray-100"
-              }`}
-              style={{
-                transitionDelay: isVisible ? `${index * 30}ms` : "0ms",
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? "translateY(0)" : "translateY(20px)",
-              }}
+              className="inter-var"
+              containerClassName="w-full"
             >
-              {/* Glow effect */}
-              <div
-                className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300"
-                style={{ backgroundColor: skill.color }}
-              />
-
-              <skill.icon
-                className="relative text-5xl mb-3 transition-transform duration-300 group-hover:scale-125 group-hover:rotate-12"
-                style={{ color: skill.color }}
-              />
-              <span
-                className={`relative text-sm font-medium text-center ${
-                  isDark ? "text-gray-300" : "text-gray-700"
+              <CardBody
+                className={`relative group/card w-full h-auto rounded-2xl p-6 border transition-all duration-300 hover:scale-110 cursor-pointer flex flex-col items-center justify-center backdrop-blur-sm ${
+                  isDark
+                    ? "bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20"
+                    : "bg-white shadow-md hover:shadow-2xl border-gray-100"
                 }`}
+                style={{
+                  transitionDelay: isVisible ? `${index * 30}ms` : "0ms",
+                  opacity: isVisible ? 1 : 0,
+                  transform: isVisible ? "translateY(0)" : "translateY(20px)",
+                }}
               >
-                {skill.name}
-              </span>
-            </div>
+                {/* Colored glow effect on hover */}
+                <div
+                  className="absolute inset-0 rounded-2xl opacity-0 group-hover/card:opacity-20 blur-xl transition-opacity duration-300"
+                  style={{ backgroundColor: skill.color }}
+                />
+
+                {/* Icon - subtle pop out effect */}
+                <CardItem translateZ="60" className="relative mb-3">
+                  <skill.icon
+                    className="text-5xl transition-transform duration-300 group-hover/card:scale-125 group-hover/card:rotate-12"
+                    style={{ color: skill.color }}
+                  />
+                </CardItem>
+
+                {/* Skill name - very subtle elevation */}
+                <CardItem
+                  translateZ="30"
+                  className={`relative text-sm font-medium text-center ${
+                    isDark ? "text-gray-300" : "text-gray-700"
+                  }`}
+                >
+                  {skill.name}
+                </CardItem>
+              </CardBody>
+            </CardContainer>
           ))}
         </div>
 
-        {/* Soft Skills avec design amélioré */}
+        {/* Soft Skills - keeping original flat design, no 3D */}
         <div
           className={`p-8 rounded-2xl backdrop-blur-sm border ${
             isDark

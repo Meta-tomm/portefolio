@@ -8,7 +8,8 @@ function Hero() {
   const [stars, setStars] = useState([]);
 
   useEffect(() => {
-    // Génère des étoiles aléatoires
+    // Generate random stars for the night theme
+    // Note: j'ai mis 100 étoiles mais peut-être trop ? à tester sur mobile
     const newStars = Array.from({ length: 100 }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
@@ -29,7 +30,7 @@ function Hero() {
           : "bg-gradient-to-b from-blue-50 via-white to-gray-50"
       }`}
     >
-      {/* Étoiles animées */}
+      {/* Animated stars - only visible in dark mode */}
       {isDark && (
         <div className="absolute inset-0 overflow-hidden">
           {stars.map((star) => (
@@ -49,7 +50,7 @@ function Hero() {
         </div>
       )}
 
-      {/* Particules flottantes */}
+      {/* Floating particles background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div
           className={`absolute w-96 h-96 rounded-full blur-3xl opacity-20 animate-float ${
@@ -66,7 +67,7 @@ function Hero() {
       </div>
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-        {/* Badge animé */}
+        {/* Status badge with pulsing dot */}
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 backdrop-blur-sm mb-8 animate-fade-in">
           <span className="relative flex h-3 w-3">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
@@ -81,7 +82,7 @@ function Hero() {
           </span>
         </div>
 
-        {/* Greeting */}
+        {/* Greeting text */}
         <p
           className={`text-lg mb-4 animate-fade-in-up ${
             isDark ? "text-blue-400" : "text-blue-600"
@@ -91,7 +92,7 @@ function Hero() {
           {t("hero.greeting")}
         </p>
 
-        {/* Name avec effet gradient */}
+        {/* Main name with gradient effect */}
         <h1
           className={`text-5xl md:text-7xl lg:text-8xl font-bold mb-6 animate-fade-in-up ${
             isDark ? "text-white" : "text-gray-900"
@@ -107,7 +108,7 @@ function Hero() {
           </span>
         </h1>
 
-        {/* Title */}
+        {/* Job title */}
         <h2
           className={`text-2xl md:text-4xl mb-6 animate-fade-in-up ${
             isDark ? "text-gray-300" : "text-gray-700"
@@ -117,7 +118,7 @@ function Hero() {
           {t("hero.title")}
         </h2>
 
-        {/* Description */}
+        {/* Short description */}
         <p
           className={`text-lg max-w-2xl mx-auto mb-10 animate-fade-in-up ${
             isDark ? "text-gray-400" : "text-gray-600"
@@ -127,7 +128,7 @@ function Hero() {
           {t("hero.description")}
         </p>
 
-        {/* Boutons CTA */}
+        {/* CTA buttons */}
         <div
           className="flex flex-wrap gap-4 justify-center animate-fade-in-up"
           style={{ animationDelay: "0.6s" }}
@@ -165,13 +166,13 @@ function Hero() {
           </a>
         </div>
 
-        {/* Social Links */}
+        {/* Social media links - TODO: maybe add more social platforms later? */}
         <div
           className="flex gap-4 justify-center mt-12 animate-fade-in"
           style={{ animationDelay: "0.7s" }}
         >
           <a
-            href="https://github.com/tommathis"
+            href="https://github.com/Meta-tomm"
             target="_blank"
             rel="noopener noreferrer"
             className={`p-3 rounded-xl transition-all duration-300 hover:scale-110 ${
@@ -222,7 +223,7 @@ function Hero() {
           </a>
         </div>
 
-        {/* Scroll indicator */}
+        {/* Scroll down indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
           <div className="flex flex-col items-center gap-2">
             <span
