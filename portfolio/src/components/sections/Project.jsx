@@ -30,7 +30,7 @@ function Projects() {
         "Portfolio personnel moderne avec animations fluides, construit avec React et Tailwind CSS. Design minimaliste et performant.",
       technologies: ["React", "Tailwind CSS", "Framer Motion"],
       github: "https://github.com/Meta-tomm/portfolio",
-      demo: "https://portfolio-metas-projects-48c16d16.vercel.app",
+      demo: null,
       status: "inProgress",
       gradient: "from-purple-500 to-pink-500",
     },
