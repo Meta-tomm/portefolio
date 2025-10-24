@@ -62,7 +62,17 @@
       "subjectPlaceholder": "Opportunité d'alternance",
       "message": "Message",
       "messagePlaceholder": "Votre message...",
-      "send": "Envoyer le message"
+      "send": "Envoyer le message",
+      "sending": "Envoi en cours...",
+      "success": "Message envoyé avec succès !",
+      "error": "Erreur lors de l'envoi. Veuillez réessayer.",
+      "validation": {
+        "nameRequired": "Le nom est requis",
+        "emailRequired": "L'email est requis",
+        "emailInvalid": "Email invalide",
+        "subjectRequired": "Le sujet est requis",
+        "messageRequired": "Le message est requis"
+      }
     }
   },
   "footer": {

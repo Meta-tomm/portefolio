@@ -1,13 +1,122 @@
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useTheme } from "../../context/themecontext";
 import { useScrollAnimation } from "../../hooks/UseScrollAnimation";
+import emailjs from "@emailjs/browser";
+import { EMAILJS_CONFIG } from "../../config/emailjs";
 
-// Contact section with form
-// TODO: connecter à EmailJS ou Formspree pour envoyer les messages
+// Contact section with form connected to EmailJS
 function Contact() {
   const [ref, isVisible] = useScrollAnimation();
   const { isDark } = useTheme();
   const { t } = useTranslation();
+
+  // Form state
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  // Validation errors
+  const [errors, setErrors] = useState({});
+
+  // Form status: 'idle' | 'sending' | 'success' | 'error'
+  const [status, setStatus] = useState("idle");
+
+  // Handle input changes
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+    // Clear error for this field when user starts typing
+    if (errors[name]) {
+      setErrors((prev) => ({
+        ...prev,
+        [name]: "",
+      }));
+    }
+  };
+
+  // Validate form
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!formData.name.trim()) {
+      newErrors.name = t("contact.form.validation.nameRequired");
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = t("contact.form.validation.emailRequired");
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = t("contact.form.validation.emailInvalid");
+    }
+
+    if (!formData.subject.trim()) {
+      newErrors.subject = t("contact.form.validation.subjectRequired");
+    }
+
+    if (!formData.message.trim()) {
+      newErrors.message = t("contact.form.validation.messageRequired");
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Validate form
+    if (!validateForm()) {
+      return;
+    }
+
+    setStatus("sending");
+
+    try {
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        to_name: "Tom Mathis Chapuis", // Your name
+      };
+
+      await emailjs.send(
+        EMAILJS_CONFIG.serviceId,
+        EMAILJS_CONFIG.templateId,
+        templateParams,
+        EMAILJS_CONFIG.publicKey
+      );
+
+      setStatus("success");
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+
+      // Reset success message after 5 seconds
+      setTimeout(() => {
+        setStatus("idle");
+      }, 5000);
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      setStatus("error");
+
+      // Reset error message after 5 seconds
+      setTimeout(() => {
+        setStatus("idle");
+      }, 5000);
+    }
+  };
 
   const contactInfo = [
     {
@@ -195,7 +304,7 @@ function Contact() {
               {t("contact.sendMessage")}
             </h3>
 
-            <form className="space-y-5">
+            <form onSubmit={handleSubmit} className="space-y-5">
               <div>
                 <label
                   className={`block text-sm mb-2 font-medium ${
@@ -206,13 +315,21 @@ function Contact() {
                 </label>
                 <input
                   type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
                   className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all ${
+                    errors.name ? "border-red-500" : ""
+                  } ${
                     isDark
                       ? "bg-white/5 border-white/10 text-white placeholder-gray-500"
                       : "bg-white border-gray-200 text-gray-900"
                   }`}
                   placeholder={t("contact.form.namePlaceholder")}
                 />
+                {errors.name && (
+                  <p className="text-red-500 text-sm mt-1">{errors.name}</p>
+                )}
               </div>
 
               <div>
@@ -225,13 +342,21 @@ function Contact() {
                 </label>
                 <input
                   type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all ${
+                    errors.email ? "border-red-500" : ""
+                  } ${
                     isDark
                       ? "bg-white/5 border-white/10 text-white placeholder-gray-500"
                       : "bg-white border-gray-200 text-gray-900"
                   }`}
                   placeholder={t("contact.form.emailPlaceholder")}
                 />
+                {errors.email && (
+                  <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                )}
               </div>
 
               <div>
@@ -244,13 +369,21 @@ function Contact() {
                 </label>
                 <input
                   type="text"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
                   className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all ${
+                    errors.subject ? "border-red-500" : ""
+                  } ${
                     isDark
                       ? "bg-white/5 border-white/10 text-white placeholder-gray-500"
                       : "bg-white border-gray-200 text-gray-900"
                   }`}
                   placeholder={t("contact.form.subjectPlaceholder")}
                 />
+                {errors.subject && (
+                  <p className="text-red-500 text-sm mt-1">{errors.subject}</p>
+                )}
               </div>
 
               <div>
@@ -263,20 +396,52 @@ function Contact() {
                 </label>
                 <textarea
                   rows="5"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
                   className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none transition-all resize-none ${
+                    errors.message ? "border-red-500" : ""
+                  } ${
                     isDark
                       ? "bg-white/5 border-white/10 text-white placeholder-gray-500"
                       : "bg-white border-gray-200 text-gray-900"
                   }`}
                   placeholder={t("contact.form.messagePlaceholder")}
                 ></textarea>
+                {errors.message && (
+                  <p className="text-red-500 text-sm mt-1">{errors.message}</p>
+                )}
               </div>
+
+              {/* Status messages */}
+              {status === "success" && (
+                <div className="p-4 bg-green-500/10 border border-green-500/50 rounded-xl">
+                  <p className="text-green-500 text-center font-medium">
+                    {t("contact.form.success")}
+                  </p>
+                </div>
+              )}
+
+              {status === "error" && (
+                <div className="p-4 bg-red-500/10 border border-red-500/50 rounded-xl">
+                  <p className="text-red-500 text-center font-medium">
+                    {t("contact.form.error")}
+                  </p>
+                </div>
+              )}
 
               <button
                 type="submit"
-                className="w-full px-6 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 font-medium hover:scale-105 flex items-center justify-center gap-2"
+                disabled={status === "sending"}
+                className={`w-full px-6 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 font-medium hover:scale-105 flex items-center justify-center gap-2 ${
+                  status === "sending"
+                    ? "opacity-50 cursor-not-allowed"
+                    : ""
+                }`}
               >
-                {t("contact.form.send")}
+                {status === "sending"
+                  ? t("contact.form.sending")
+                  : t("contact.form.send")}
                 <svg
                   className="w-5 h-5"
                   fill="none"
