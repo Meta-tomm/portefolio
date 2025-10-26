@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { useTheme } from "../../context/themecontext";
 
-// Footer component with links and copyright
+// Footer component with links et copyright
 function Footer() {
   const { isDark } = useTheme();
   const { t } = useTranslation();
